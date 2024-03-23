@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <title>Dostava</title>
+</head>
+
+<body onload="loadPage()">
+    <div class="container">
+        <div class="row mt-3">
+            <button type="button" id="btnLogin" onclick="showLogin()" class="btn btn-lg btn-primary">Login</button>
+            <button type="button" id="btnRegister" onclick="showRegistration()"
+                class="btn btn-lg btn-secondary mt-2">Register</button>
+            <div id="logout" style="display:none" class="mt-1">
+                <br /><br />
+                <h3>Logout</h3>
+                <br />
+                <button class="btn btn-warning" onclick="logout()">Logout</button>
+                <p id="info"></p>
+            </div>
+        </div>
+        <div id="loginFormDiv" style="display:none">
+            <h3>Login</h3>
+            <form method="post" action="post/" id="loginForm" onsubmit="return loginUser()">
+                <p><label>Username: <input type="text" id="usernameLogin"></label></p>
+                <p><label>Password: <input type="password" id="passwordLogin"></label></p>
+                <br />
+                <p><button class="btn btn-success">Submit</button></p>
+            </form>
+        </div>
+        <div id="registerFormDiv" style="display:none">
+            <h3>Register</h3>
+            <form method="post" action="post/" id="registerForm" onsubmit="return registerUser()">
+                <p><label>Email: <input type="email" id="emailRegister"></label></p>
+                <p><label>Username: <input type="text" id="usernameRegister"></label></p>
+                <p><label>Password: <input type="password" id="passwordRegister"></label></p>
+                <p><label>Confirm password: <input type="password" id="confirmPasswordRegister"></label></p>
+                <br />
+                <p><button class="btn btn-success">Submit</button></p>
+            </form>
+            <p>Password value needs to meet following parameters:</p>
+            <ol style="display:inline-block;">
+                <li>
+                    at least six characters
+                </li>
+                <li>
+                    at least one numeric character
+                </li>
+                <li>
+                    at least one non-alphanumeric character
+                </li>
+                <li>
+                    at least one small leter
+                </li>
+                <li>
+                    at least one capital letter
+                </li>
+            </ol>
+            <link />
+        </div>
+        <br />
+        <br />
+        <div id="data">
+        </div>
+        <!-- ne diraj datu jebenu -->
+        <div class="row mb-3" style="display: none;"id="searchForm">
+            <h3>Pretrazi paketi po tezini</h3>
+            <form method="post" action="post/" id="searchPaketForm" onsubmit="return submitSearchPaketForm()">
+                <p><label>Tezina od:</label> <input class="form-control" id="minTezina" type="number" min="0" step="0.1"  /></p>
+                <br />
+                <p><label>Tezina do:</label> <input class="form-control" id="maxTezina" type="number" min="0" step="0.1"/></p>
+                <br />
+                <p><input type="submit" value="Search" class="btn btn-lg btn-success"/> </p>
+            </form>
+            <p><input type="submit" value="Undo search" class="btn btn-warning" id="undoSearch" onclick="undoSearch()"/> </p>
+        </div>
+        <div id="formDiv" style="display: none;">
+            <form method="post" action="post/" id="PaketForm" onsubmit="return submitPaketForm()">
+                <p><label>Primalac: </label> <input class="form-control" id="primalac" type="text" /></p>
+                <br />
+                <p><label>Posiljalac: </label> <input class="form-control" id="posiljalac" type="text" /></p>
+                <br />
+                <p><label>Tezina: </label> <input class="form-control" id="tezina" type="number" step="0.1" /></p>
+                <br />
+                <p><label>Postarina: </label> <input class="form-control" id="postarina" type="number" min="0" /></p>
+                <br />
+                <p><label>Paket dostavljen: </label> <input class="form-check-input" type="checkbox"  id="dostavljen"/></p>
+                <br />
+                <p><label>Kurir: </label> <select class="form-control" id="paketKurir"></select></p>
+                <br />
+                <p><input type="submit" value="Submit" class="btn btn-success" />
+                    <input type="reset" value="Cancel" class="btn btn-warning" onclick="cancelPaketForm()" />
+                </p>
+            </form>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
